@@ -1,65 +1,111 @@
-import { useEffect, useReducer, useState } from "react";
+// const { Component } = require("react");
+// class App extends Component{
+// constructor(){
+//   super()
+// this.state ={
+//   name:"ibrahim",
+//   age:"20",
+// }
+// }
+//   render(){
+//     return(
+// <h1>class app{this.state.age}</h1>
+//     )
+//   }
+// }
+// export default App;
+
+import { useReducer, useState } from "react";
+
+//  -- withuot usestate function
+// function App() {
+//   // let myName = "ibrahim"
+// function updateValue(){
+//   myName = "updated"
+//   console.log("updated value",myName)
+// }
+// console.log("updated value",myName)
+// function handleChange(abd){
+//   console.log("change",abd.target.value)
+//   myName = abd.target.value
+//   console.log("myname updated=>",myName)
+// }
+//   return (
+//     <div>
+//       <h1>{myName}</h1>
+//       <br />
+//       <br />
+//       <input type="text"  placeholder="enter name" onChange={(abd)=>handleChange(abd)}/>
+//       <button onClick={()=>updateValue()}>Update the name </button>
+//     </div>
+//   );
+// }
+// export default App;
+
+// create - mount
+// update - update ( didmount)
+// finish - unmount
+// react lifecycle
+
+// class rendering without lifecycle - hooks
+// usestate - state update
+// usereducer - state (complex logic)
+
+//   -- usestate function
 
 function App() {
+  const [myName, setMyName] = useState("ibrahim");
   
-// const  buttonClick = (a,b)=>{
-//   console.log("button=>",a+b)
-// }
+  function reducer(action,counter){
+    if(action==="increment"){
+     counter =  counter + 1
+    }
+    if(action==="decrement"){
+     counter =  counter - 1
+    }
+    return counter
+  }
+  
+  const [count, setCount] = useState(0);
+  const [counter, dispatch] = useReducer(reducer,0);
 
-
-
-const [data , setData] = useState("ali")
-const [count , setCount] = useState(0)
-
-// const [count , setCount] = useReducer(reducer,0)
-
-useEffect(()=>{
-  // setTimeout(()=>{
-  //   setCount(count + 1)
-  // },1000)
-  console.log("use effect")
-})
-useEffect(()=>{
-  console.log("use effect with dependency")
-},[]) //dependancy
-useEffect(()=>{
-  console.log("use effect with count")
-},[count]) //dependancy
-
-// function reducer(action){
-// console.log("action",action)
-// if(action.type ==="increment"){
-//   setCount(count +1 )
-// }
-// if(action.type ==="decrement"){
-//   setCount(count -1 )
-// }
-// }
-
-
-// const  handleChange = (e)=>{
-//   setData(e.target.value)
-//   console.log("handle change=>",e.target.value)
- 
-// }
-
-  return <div>
-    <h1>THis is heading</h1>
-    {/* <button onClick={()=>buttonClick(2,3)}>Click</button> */}
-    <br />
-    {/* <input type="text" onChange={(e)=>handleChange(e)}  placeholder="enter your name"/> */}
-    <h1>{data}</h1>
-    <button onClick={()=>setData("bilal")}>click</button>
-
-    <button onClick={()=>setCount(count + 1)}>Increment</button>
-    <br />
-    <h1>{count}</h1>
-    <br />
-    <button onClick={()=>setCount(count - 1)}>Decrement</button>
-    
-  </div>;
+function handleChange(e){
+setMyName(e.target.value)
+console.log("e",e.target.value)
 }
 
-export default App;
+  return (
+    <div>
+      <h1>{myName}</h1>
+      <br />
+      <h2>{counter} : {count}</h2>
+      <br />
+      <button
+        onClick={() => setCount(count-1)}
+        style={{ border: "2px solid black" }}
+      >
+        Update
+      </button>
+      <button
+        onClick={() => dispatch("increment")}
+        style={{ border: "2px solid black" }}
+      >
+        increment 
+      </button>
+      <button
+        onClick={() => dispatch("decrement")}
+        style={{ border: "2px solid black" }}
+      >
+        decrement
+      </button>
+      <br />
 
-// mounting , update ,unmount
+      <input
+        type="text"
+        placeholder="enter name"
+        onChange={(e) => handleChange(e)}
+      />
+    </div>
+  );
+}
+export default App;
