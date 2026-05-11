@@ -15,16 +15,17 @@
 // }
 // export default App;
 
-import {
-  createContext,
-  useContext,
-  useEffect,
-  //  useReducer,
-  useState,
-} from "react";
-import Component1 from "./component/Component1.jsx";
-import Component2 from "./component/Component2.jsx";
-import Component3 from "./component/Component3.jsx";
+// import {
+//   createContext,
+//   useContext,
+//   useEffect,
+//   //  useReducer,
+//   useState,
+// } from "react";
+// import Component1 from "./component/Component1.jsx";
+// import Component2 from "./component/Component2.jsx";
+// import Component3 from "./component/Component3.jsx";
+import Routing from "./route/Routing.jsx";
 
 //  -- withuot usestate function
 // function App() {
@@ -176,25 +177,38 @@ import Component3 from "./component/Component3.jsx";
 // context api (simple global state) / proivers
 // redux / zustand (globally complex state) /slices
 
-export const NameContext = createContext()
+// export const NameContext = createContext()
+
+// function App(){
+
+//   const [name,setName] = useState("ali")
+//   const [theme,setTheme] = useState("light")
+
+// const toggleTheme = ()=>{
+//  setTheme(theme === "light" ? "dark" : "light")
+// }
+//   return(
+// <NameContext.Provider value={{name,toggleTheme}}>
+//   <div style={{backgroundColor:"red"}}>
+
+//   <Component1/>
+//   <Component2/>
+//   <Component3/>
+//   </div>
+// </NameContext.Provider>
+//   )
+// }
+// export default App
+
+
+//  --- globally usecontext 
 
 function App(){
-
-  const [name,setName] = useState("ali")
-  const [theme,setTheme] = useState("light")
-
-const toggleTheme = ()=>{
- setTheme(theme === "light" ? "dark" : "light")
-}
   return(
-<NameContext.Provider value={{name,toggleTheme}}>
-  <div style={{backgroundColor:"red"}}>
+<div>
+  <Routing/>
 
-  <Component1/>
-  <Component2/>
-  <Component3/>
-  </div>
-</NameContext.Provider>
+</div>
   )
 }
-export default App
+export default App;
