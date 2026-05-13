@@ -1,16 +1,15 @@
-import React, { useContext } from 'react'
-import { NameContext } from '../App'
+import { useContext } from "react";
+import { NameContext } from "../App";
 
-function Component1() {
+function Component1(){
 
-  const {name} = useContext(NameContext)
-  console.log("name=>",name.name)
-  return (
-    <div>
-      Component1
-      <h1>my name is : {name}</h1>
-    </div>
+const name = useContext(NameContext)
+console.log("name=>",name)
+  return(
+<div>
+  comp 1
+  <h1>{name}</h1>
+</div>
   )
 }
-
-export default Component1
+export default Component1;

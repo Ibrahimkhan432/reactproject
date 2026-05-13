@@ -25,7 +25,15 @@
 // import Component1 from "./component/Component1.jsx";
 // import Component2 from "./component/Component2.jsx";
 // import Component3 from "./component/Component3.jsx";
-import Routing from "./route/Routing.jsx";
+import { 
+  // createContext,
+   useContext, 
+  //  useState
+   } from "react";
+// import Component1 from "./component/Component1.jsx";
+// import Component2 from "./component/Component2.jsx";
+import { ThemeContext } from "./component/ThemeContext.jsx";
+import Navbar from "./component/global/Navbar.jsx";
 
 //  -- withuot usestate function
 // function App() {
@@ -173,7 +181,6 @@ import Routing from "./route/Routing.jsx";
 
 // export default App;
 
-
 // context api (simple global state) / proivers
 // redux / zustand (globally complex state) /slices
 
@@ -200,15 +207,40 @@ import Routing from "./route/Routing.jsx";
 // }
 // export default App
 
+//  --- globally usecontext
 
-//  --- globally usecontext 
+// export const NameContext = createContext()
+
+// function App() {
+
+//   const [name,setName] = useState("ali")
+
+//   return (
+//    <NameContext.Provider value={name}>
+//     <Component1/>
+//     <Component2/>
+//    </NameContext.Provider>
+//   );
+// }
+// export default App;
 
 function App(){
-  return(
-<div>
-  <Routing/>
+  const {theme,changeTheme} = useContext(ThemeContext)
+const myStyle ={
+  backgroundColor : theme === "halka"? "white" : "red",
+  height:"100vh",
+  color:theme ==="halka" ? "black" :"white"
+}
 
-</div>
+  return(
+    <div style={myStyle}>
+      <Navbar/>
+      app
+      <br />
+      <button
+      style={{border:"2px solid black",padding:"2px",backgroundColor:"black",color:"white"}}
+      onClick={changeTheme}>CHANGE THEME</button>
+    </div>
   )
 }
 export default App;

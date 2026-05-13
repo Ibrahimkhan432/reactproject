@@ -1,12 +1,13 @@
-import React from 'react'
-import Component3 from './Component3'
+import React, { useContext } from 'react'
+import { NameContext } from '../App'
 
-function Component2({name}) {
-  console.log("name in c2",name)
+function Component2() {
+  const name=useContext(NameContext)
+
   return (
     <div>
-      Component2  name is {name}
-      <Component3 name={name}/>
+      comp 2 
+      <h1>{name} in comp 2</h1>
     </div>
   )
 }
