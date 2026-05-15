@@ -25,15 +25,19 @@
 // import Component1 from "./component/Component1.jsx";
 // import Component2 from "./component/Component2.jsx";
 // import Component3 from "./component/Component3.jsx";
-import { 
+import {
   // createContext,
-   useContext, 
+  useContext,
   //  useState
-   } from "react";
+} from "react";
 // import Component1 from "./component/Component1.jsx";
 // import Component2 from "./component/Component2.jsx";
 import { ThemeContext } from "./component/ThemeContext.jsx";
 import Navbar from "./component/global/Navbar.jsx";
+import Hero from "./component/Hero.jsx";
+import Hero2 from "./component/Hero2.jsx";
+import Footer from "./component/global/Footer.jsx";
+import Routing from "./route/Routing.jsx";
 
 //  -- withuot usestate function
 // function App() {
@@ -224,23 +228,18 @@ import Navbar from "./component/global/Navbar.jsx";
 // }
 // export default App;
 
-function App(){
-  const {theme,changeTheme} = useContext(ThemeContext)
-const myStyle ={
-  backgroundColor : theme === "halka"? "white" : "red",
-  height:"100vh",
-  color:theme ==="halka" ? "black" :"white"
-}
+function App() {
+  // const { theme, changeTheme } = useContext(ThemeContext);
+  // const myStyle = {                        //halka   taiz
+  //   backgroundColor: theme === "halka" ? "white" : "red",
+  //   height: "100vh",
+  //   color: theme === "halka" ? "black" : "white",
+  // };
 
-  return(
-    <div style={myStyle}>
-      <Navbar/>
-      app
-      <br />
-      <button
-      style={{border:"2px solid black",padding:"2px",backgroundColor:"black",color:"white"}}
-      onClick={changeTheme}>CHANGE THEME</button>
+  return (
+    <div>
+     <Routing/>
     </div>
-  )
+  );
 }
 export default App;

@@ -7,7 +7,7 @@ const {theme,toggleTheme} = useContext(ThemeContext)
 console.log("theme=>",theme,toggleTheme)
   return (
     <div style={{
-background : theme === "dark" ? "black" : "white",
+background : theme === "halka" ? "white" : "blue",
 color: theme === "light" ? "black" : "white",
 height : "100vh"
 

@@ -1,12 +1,15 @@
 import React from 'react'
 import Hero from '../component/Hero'
-import Skills from '../component/Skills'
+import Navbar from '../component/global/Navbar'
+import Hero2 from '../component/Hero2'
+import Footer from '../component/global/Footer'
 
 function Home() {
   return (
     <div>
       <Hero/>
-      <Skills/>
+      <Hero2/>
+      <Footer/>
     </div>
   )
 }

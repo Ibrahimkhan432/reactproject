@@ -6,12 +6,11 @@ function Contact() {
 const {theme,toggleTheme} = useContext(ThemeContext)
 console.log("theme=>",theme,toggleTheme)
   return (
-    <div style={{
-background : theme === "dark" ? "black" : "white",
-color: theme === "light" ? "black" : "white",
-height : "100vh"
-
-    }}>
+    <div
+    style={{backgroundColor:theme==="halka"?"white":"pink",
+      height:"300px",border:"2px solid black",display:"flex",justifyContent:"center",alignItems:"center",
+    }} 
+>
       contact
       <br />
       <button onClick={toggleTheme}> {theme} Mode</button>

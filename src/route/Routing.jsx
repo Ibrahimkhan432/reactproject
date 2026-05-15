@@ -6,13 +6,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import Contact from "../pages/Contact";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
+import Navbar from "../component/global/Navbar";
 // import App from "../App";
 
 function Routing() {
   return (
     <div>
       <BrowserRouter>
-      {/* <Navbar/> */}
+      <Navbar/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
