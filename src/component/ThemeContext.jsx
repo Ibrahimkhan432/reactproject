@@ -14,6 +14,7 @@ const [studentData,setStudentData]=useState({
   batch:18,
   slot:'MWF'
 })
+
 const changeTheme = ()=>{
   if(theme==="halka"){
   SetTheme("taiz")
