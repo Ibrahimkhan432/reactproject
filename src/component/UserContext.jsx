@@ -13,7 +13,7 @@ const getUser =async ()=>{
         if (loading) return <h1> loading....</h1>
         const response = await fetch("https://jsonplaceholder.typicode.com/users/1")
         const data = await response.json()
-        console.log("data",data)
+        // console.log("data",data)
         setUser({
             name:data.name,
             username:data.username,

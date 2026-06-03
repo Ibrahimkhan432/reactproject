@@ -28,16 +28,20 @@
 import {
   // createContext,
   useContext,
+  useEffect,
+  useReducer,
+  useRef,
+  useState,
   //  useState
 } from "react";
 // import Component1 from "./component/Component1.jsx";
 // import Component2 from "./component/Component2.jsx";
-import { ThemeContext } from "./component/ThemeContext.jsx";
-import Navbar from "./component/global/Navbar.jsx";
-import Hero from "./component/Hero.jsx";
-import Hero2 from "./component/Hero2.jsx";
-import Footer from "./component/global/Footer.jsx";
-import Routing from "./route/Routing.jsx";
+// import { ThemeContext } from "./component/ThemeContext.jsx";
+// import Navbar from "./component/global/Navbar.jsx";
+// import Hero from "./component/Hero.jsx";
+// import Hero2 from "./component/Hero2.jsx";
+// import Footer from "./component/global/Footer.jsx";
+// import Routing from "./route/Routing.jsx";
 
 //  -- withuot usestate function
 // function App() {
@@ -228,7 +232,7 @@ import Routing from "./route/Routing.jsx";
 // }
 // export default App;
 
-function App() {
+// function App() {
   // const { theme, changeTheme } = useContext(ThemeContext);
   // const myStyle = {                        //halka   taiz
   //   backgroundColor: theme === "halka" ? "white" : "red",
@@ -236,10 +240,80 @@ function App() {
   //   color: theme === "halka" ? "black" : "white",
   // };
 
-  return (
+//   return (
+//     <div>
+//      {/* <Routing/> */}
+//     </div>
+//   );
+// }
+// export default App;
+
+
+// -- useRef
+//   safe from re-rendering 
+//  direct access dom without re-rendering
+// persist value 
+// useref => .current (object)
+
+// -- usememo
+//  --usereducer
+
+function App() {
+
+
+// const userefValue = useRef()
+// // console.log("useref",userefValue.current.value)
+// const handleText = ()=>{
+//   userefValue.current.value = "text in input field"
+//   userefValue.current.style.backgroundColor="red"
+// }
+
+// --counter
+// const [counter,setCount] =useState(0)
+// const initcounter = useRef()
+
+// useEffect(()=>{
+// initcounter.current= counter
+// console.log("eff=>",initcounter.current)
+// },[counter])
+
+const initcounter = {
+  count:0,
+  id:1,
+  value:"increment"
+}
+
+const reducer = (state,action)=>{
+switch(action.type){
+case "increment"
+return count + 1
+case "decrement"
+return count -1
+case default
+return count
+} 
+
+const [count, dispatch] = useReducer(reducer,{count:0}, or initialcounter)
+
+
+
+  return(
     <div>
-     <Routing/>
+{/* <h1 ref={userefValue}>
+  this is heading
+</h1> */}
+{/* <input
+style={{border:"2px solid black"}}
+type="text" ref={userefValue}/>
+<button onClick={handleText}>click</button> */}
+
+<h1>counter : {counter}</h1>
+<h1>initial value : {initcounter.current}</h1>
+<button onClick={()=>setCount(counter + 1)}>increment</button>
+<button onClick={()=>dispatch("increment")}></button>
+<button onClick={()=>dispatch("decrement")}></button>
     </div>
-  );
+
+  )
 }
 export default App;
