@@ -1,18 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import Themeprovider from './component/ThemeContext.jsx';
-import UserProvider from './component/UserContext.jsx';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import Themeprovider from "./component/ThemeContext.jsx";
+import UserProvider from "./component/UserContext.jsx";
+import { store } from "./redux/userSlice.js";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <Themeprovider>
-        <UserProvider>
+  <Themeprovider>
+    <UserProvider>
+      <Provider store={store}>
         <App />
-        </UserProvider>
-    </Themeprovider>
+      </Provider>
+    </UserProvider>
+  </Themeprovider>,
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -258,7 +258,7 @@ import {
 // -- usememo
 //  --usereducer
 
-function App() {
+// function App() {
 
 
 // const userefValue = useRef()
@@ -277,28 +277,28 @@ function App() {
 // console.log("eff=>",initcounter.current)
 // },[counter])
 
-const initcounter = {
-  count:0,
-  id:1,
-  value:"increment"
-}
+// const initcounter = {
+//   count:0,
+//   id:1,
+//   value:"increment"
+// }
 
-const reducer = (state,action)=>{
-switch(action.type){
-case "increment"
-return count + 1
-case "decrement"
-return count -1
-case default
-return count
-} 
+// const reducer = (state,action)=>{
+// switch(action.type){
+// case "increment"
+// return count + 1
+// case "decrement"
+// return count -1
+// case default
+// return count
+// } 
 
-const [count, dispatch] = useReducer(reducer,{count:0}, or initialcounter)
+// const [count, dispatch] = useReducer(reducer,{count:0}, or initialcounter)
 
 
 
-  return(
-    <div>
+//   return(
+    // <div>
 {/* <h1 ref={userefValue}>
   this is heading
 </h1> */}
@@ -307,7 +307,7 @@ style={{border:"2px solid black"}}
 type="text" ref={userefValue}/>
 <button onClick={handleText}>click</button> */}
 
-<h1>counter : {counter}</h1>
+{/* <h1>counter : {counter}</h1>
 <h1>initial value : {initcounter.current}</h1>
 <button onClick={()=>setCount(counter + 1)}>increment</button>
 <button onClick={()=>dispatch("increment")}></button>
@@ -316,4 +316,54 @@ type="text" ref={userefValue}/>
 
   )
 }
+export default App; */}
+
+// -- Redux -- 
+
+// contexapi - builten
+// use when global simple data
+// file - global (provider)
+// multiple pages
+// eg - theme , user , auth , cart , product , ...
+// main - (themeprovider(app)themeprovider)
+// (userprov(app)userprov)
+// (authprov(app)authprov)
+
+// redux  - npm
+// use when global complex data data
+//store
+//  auth
+// user
+// theme
+// 3 (store , switch , constants , reducers ,action ,state )
+// redux tool kit (RTK)
+// (action,reducer,state)
+
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {setUser} from './redux/userSlice'
+function App() {
+  const user = useSelector((state) => state.user.user);
+  console.log("user in app=>", user);
+
+const dispatch = useDispatch()
+
+
+ const login = () => {
+    dispatch(setUser({
+      name: "ali",
+      email: "ali@gmail.com",
+      password: 123456,
+    }));
+  };
+
+  return (
+    <div>
+      app
+      <button onClick={login}>Login</button>
+      <button onClick={logout}>Logout</button>
+    </div>
+  );
+}
+
 export default App;
