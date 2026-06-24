@@ -1,0 +1,14 @@
+
+import React, { memo } from 'react'
+
+function ChildComponent({fetchData}) {
+  console.log("rerender child")
+  return (
+    <div>
+      child 
+      <button onClick={fetchData}>fetch user</button>
+    </div>
+  )
+}
+
+export default memo(ChildComponent)
